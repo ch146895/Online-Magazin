@@ -3,11 +3,17 @@ body {
     background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
     margin: 0;
     color: #333;
+    transition: background 1s;
 }
 
 .navbar {
     background: linear-gradient(90deg, #a5b4fc 0%, #fbc2eb 100%);
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    animation: navbarFadeIn 1.2s ease;
+}
+@keyframes navbarFadeIn {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 .navbar ul {
     list-style: none;
@@ -26,10 +32,22 @@ body {
     padding: 0.75em 1em;
     border-radius: 20px;
     transition: background 0.2s, color 0.2s;
+    position: relative;
+    overflow: hidden;
 }
 .navbar a:hover {
     background: #fbc2eb;
     color: #fff;
+    box-shadow: 0 0 10px #fbc2eb55;
+}
+.navbar a .icon {
+    margin-right: 0.5em;
+    font-size: 1.1em;
+    vertical-align: middle;
+    transition: transform 0.3s;
+}
+.navbar a:hover .icon {
+    transform: scale(1.2) rotate(-10deg);
 }
 
 header {
@@ -37,6 +55,7 @@ header {
     padding: 2em 1em 1em 1em;
     background: linear-gradient(90deg, #fbc2eb 0%, #a1c4fd 100%);
     color: #4f46e5;
+    transition: background 0.8s;
 }
 
 main {
@@ -46,15 +65,53 @@ main {
     border-radius: 16px;
     box-shadow: 0 4px 24px rgba(160,160,255,0.08);
     padding: 2em;
+    animation: mainFadeIn 1.5s cubic-bezier(.68,-0.55,.27,1.55);
 }
+@keyframes mainFadeIn {
+    from { opacity: 0; transform: scale(0.98) translateY(40px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+h2.rainbow-text {
+    background: linear-gradient(90deg, #fbc2eb, #a1c4fd, #fbc2eb, #a1c4fd);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: rainbowMove 3s linear infinite;
+}
+@keyframes rainbowMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
 section {
     margin-bottom: 2em;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s, transform 0.8s;
+}
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 h1, h2 {
     font-weight: 700;
 }
 h2 {
     color: #a21caf;
+}
+/* Fade-in Animation */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.2s forwards;
+}
+.fade-in[style*="animation-delay"] {
+    animation-delay: 0.5s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 footer {
     text-align: center;
