@@ -1,4 +1,4 @@
-
+// Navigation smooth scroll
 const links = document.querySelectorAll('.navbar a');
 links.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -13,7 +13,7 @@ links.forEach(link => {
     });
 });
 
-
+// Highlight active section in navbar
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('main section');
     let scrollPos = window.scrollY + 100;
@@ -28,4 +28,30 @@ window.addEventListener('scroll', () => {
             }
         }
     });
+});
+
+// Animation: Slide-up sections when in viewport
+function revealSections() {
+    const sections = document.querySelectorAll('main section');
+    const triggerBottom = window.innerHeight * 0.85;
+    sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < triggerBottom) {
+            section.classList.add('visible');
+        } else {
+            section.classList.remove('visible');
+        }
+    });
+}
+window.addEventListener('scroll', revealSections);
+window.addEventListener('load', revealSections);
+
+// Animation: Header background changes on scroll
+window.addEventListener('scroll', () => {
+    const header = document.getElementById('main-header');
+    if (window.scrollY > 80) {
+        header.style.background = 'linear-gradient(90deg, #a1c4fd 0%, #fbc2eb 100%)';
+    } else {
+        header.style.background = 'linear-gradient(90deg, #fbc2eb 0%, #a1c4fd 100%)';
+    }
 });
