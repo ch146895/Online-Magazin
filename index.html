@@ -7,39 +7,72 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <ul>
-            <li><a href="#home"><span class="icon">🏠</span> Home</a></li>
-            <li><a href="#artikel"><span class="icon">📰</span> Artikel</a></li>
-            <li><a href="#galerie"><span class="icon">🎨</span> Galerie</a></li>
-            <li><a href="#about"><span class="icon">❓</span> Über</a></li>
-        </ul>
+    <nav class="topnav">
+        <div class="nav-inner">
+            <a class="brand" href="#home">Ist das Kunst</a>
+            <div class="nav-links">
+                <a href="#magazin">Magazin</a>
+                <a href="#songs">Songs</a>
+                <a href="#about">Über</a>
+            </div>
+        </div>
     </nav>
-    <header>
-        <h1>Ist das Kunst oder kann das weg?</h1>
-        <p>Ausgabe   2025</p>
-    <header id="main-header">
-        <h1 class="fade-in">Der Wert KI-generierter Musik</h1>
-        <p class="fade-in" style="animation-delay:0.5s">Was ist besser? Menschliche oder KI-generierte Musik</p>
+    <header id="main-header" class="site-hero">
+        <div class="hero-inner">
+            <h1 class="hero-title">Ist das Kunst oder kann das weg?</h1>
+            <p class="hero-sub">Der Wert KI-generierter Musik — Ausgabe 2025</p>
+        </div>
     </header>
-            <p>Entdecke spannende Artikel, inspirierende Bilder und kreative Ideen.</p>
-        <main>
-            <section id="home" class="slide-up">
-                <h2 class="rainbow-text">Willkommen!</h2>
-                <p>Entdecke spannende Artikel, inspirierende Bilder und kreative Ideen.</p>
-            </section>
-            <section id="artikel" class="slide-up">
-                <h2 class="rainbow-text">Artikel</h2>
-                <p>Hier findest du interessante Beiträge rund um Kunst und Kultur.</p>
-            </section>
-            <section id="galerie" class="slide-up">
-                <h2 class="rainbow-text">Galerie</h2>
-                <p>Eine bunte Auswahl an Bildern und Kunstwerken.</p>
-            </section>
-            <section id="about" class="slide-up">
-                <h2 class="rainbow-text">Über das Magazin</h2>
-                <p>Wir stellen die Frage: Ist das Kunst oder kann das weg? Diskutiere mit!</p>
-            </section>
-        </main>
+    <p class="intro">Entdecke spannende Artikel, inspirierende Bilder und kreative Ideen.</p>
+            <main>
+                <div class="tab-contents">
+                <section id="home" class="slide-up" data-tab-content="home">
+                    <h2 class="rainbow-text">Willkommen!</h2>
+                    <div class="home-hero">
+                        <img src="hero.jpg" alt="Magazin Cover" id="home-image" onerror="this.style.display='none'">
+                        <h3 class="home-title">Ist das Kunst oder kann das weg?</h3>
+                    </div>
+                    <p>Hier findest du aktuelle Themen, Vergleiche zwischen KI-generierter und menschlicher Kunst und mehr.</p>
+                </section>
+
+                <section id="magazin" class="slide-up" data-tab-content="magazin">
+                    <h2 class="section-title">Magazin</h2>
+                    <p>Setze dein Magazin als Datei `magazin.pdf` in das Projektverzeichnis, oder lade es hier hoch.</p>
+                    <div class="magazin-controls">
+                        <input type="file" id="pdf-upload" accept="application/pdf">
+                    </div>
+                    <!-- Simple local-friendly PDF viewer: embed local magazin.pdf or blob URL -->
+                    <div class="magazin-viewer">
+                        <div class="magazin-embed-wrap">
+                            <embed id="pdf-embed" src="magazin.pdf" type="application/pdf" width="100%" height="800px">
+                            <button id="pdf-exit-fullscreen" class="pdf-exit" aria-hidden="true">Schliessen ✕</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="songs" class="slide-up" data-tab-content="songs">
+                    <h2 class="section-title">Songs</h2>
+                    <p>Bitte lade zwei Songs hoch. Beide werden als Player angezeigt:</p>
+                    <div class="song-upload">
+                        <label>Song 1: <input type="file" id="song1-upload" accept="audio/*"></label>
+                        <audio id="player1" controls></audio>
+                    </div>
+                    <div class="song-upload">
+                        <label>Song 2: <input type="file" id="song2-upload" accept="audio/*"></label>
+                        <audio id="player2" controls></audio>
+                    </div>
+                    <div class="comparison">
+                        <h3>KI und selbstgenerierte Musik im Vergleich</h3>
+                        <p class="compare-note">Vergleiche die Tracks nebeneinander.</p>
+                    </div>
+                </section>
+
+                <section id="about" class="slide-up" data-tab-content="about">
+                    <h2 class="rainbow-text">Über das Magazin</h2>
+                    <p>Wir stellen die Frage: Ist das Kunst oder kann das weg? Diskutiere mit!</p>
+                </section>
+                </div>
+            </main>
+    <script src="script.js"></script>
 </body>
 </html>
