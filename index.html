@@ -9,11 +9,10 @@
 <body>
     <nav class="topnav">
         <div class="nav-inner">
-            <a class="brand" href="#home">Ist das Kunst</a>
-            <div class="nav-links">
-                <a href="#magazin">Magazin</a>
-                <a href="#songs">Songs</a>
-                <a href="#about">Über</a>
+            <a class="brand" href="#" data-page="1">Ist das Kunst</a>
+            <div class="page-indicator">
+                <span class="page-label">Seite:</span>
+                <div class="page-dots" id="page-dots"></div>
             </div>
         </div>
     </nav>
@@ -25,52 +24,156 @@
     </header>
     <p class="intro">Entdecke spannende Artikel, inspirierende Bilder und kreative Ideen.</p>
             <main>
-                <div class="tab-contents">
-                <section id="home" class="slide-up" data-tab-content="home">
-                    <h2 class="rainbow-text">Willkommen!</h2>
-                    <div class="home-hero">
-                        <img src="hero.jpg" alt="Magazin Cover" id="home-image" onerror="this.style.display='none'">
-                        <h3 class="home-title">Ist das Kunst oder kann das weg?</h3>
+                <div class="page-container">
+                <!-- Page 1: Home -->
+                <div class="page" data-page="1">
+                    <div class="page-content">
+                        <h2 class="page-title">Willkommen!</h2>
+                        <div class="home-hero">
+                            <img src="hero.jpg" alt="Magazin Cover" id="home-image" onerror="this.style.display='none'">
+                            <h3 class="home-title">Ist das Kunst oder kann das weg?</h3>
+                        </div>
+                        <p>Hier findest du aktuelle Themen, Vergleiche zwischen KI-generierter und menschlicher Kunst und mehr.</p>
                     </div>
-                    <p>Hier findest du aktuelle Themen, Vergleiche zwischen KI-generierter und menschlicher Kunst und mehr.</p>
-                </section>
+                </div>
 
-                <section id="magazin" class="slide-up" data-tab-content="magazin">
-                    <h2 class="section-title">Magazin</h2>
-                    <p>Setze dein Magazin als Datei `magazin.pdf` in das Projektverzeichnis, oder lade es hier hoch.</p>
-                    <div class="magazin-controls">
-                        <input type="file" id="pdf-upload" accept="application/pdf">
-                    </div>
-                    <!-- Simple local-friendly PDF viewer: embed local magazin.pdf or blob URL -->
-                    <div class="magazin-viewer">
-                        <div class="magazin-embed-wrap">
-                            <embed id="pdf-embed" src="magazin.pdf" type="application/pdf" width="100%" height="800px">
-                            <button id="pdf-exit-fullscreen" class="pdf-exit" aria-hidden="true">Schliessen ✕</button>
+                <!-- Page 2: Magazin -->
+                <div class="page" data-page="2">
+                    <div class="page-content">
+                        <p>Setze dein Magazin als Datei `magazin.pdf` in das Projektverzeichnis, oder lade es hier hoch.</p>
+                        <div class="magazin-controls">
+                            <input type="file" id="pdf-upload" accept="application/pdf">
+                        </div>
+                        <div class="magazin-viewer">
+                            <div class="magazin-embed-wrap">
+                                <embed id="pdf-embed" src="magazin.pdf" type="application/pdf" width="100%" height="800px">
+                                <button id="pdf-exit-fullscreen" class="pdf-exit" aria-hidden="true">Schliessen ✕</button>
+                            </div>
                         </div>
                     </div>
-                </section>
+                </div>
 
-                <section id="songs" class="slide-up" data-tab-content="songs">
-                    <h2 class="section-title">Songs</h2>
-                    <p>Bitte lade zwei Songs hoch. Beide werden als Player angezeigt:</p>
-                    <div class="song-upload">
-                        <label>Song 1: <input type="file" id="song1-upload" accept="audio/*"></label>
-                        <audio id="player1" controls></audio>
+                <!-- Page 3: Songs -->
+                <div class="page" data-page="3">
+                    <div class="page-content">
+                        <h2 class="page-title">Songs</h2>
+                        <p>Bitte lade zwei Songs hoch. Beide werden als Player angezeigt:</p>
+                        <div class="song-upload">
+                            <label>Song 1: <input type="file" id="song1-upload" accept="audio/*"></label>
+                            <audio id="player1" controls></audio>
+                        </div>
+                        <div class="song-upload">
+                            <label>Song 2: <input type="file" id="song2-upload" accept="audio/*"></label>
+                            <audio id="player2" controls></audio>
+                        </div>
+                        <div class="comparison">
+                            <h3>KI und selbstgenerierte Musik im Vergleich</h3>
+                            <p class="compare-note">Vergleiche die Tracks nebeneinander.</p>
+                        </div>
                     </div>
-                    <div class="song-upload">
-                        <label>Song 2: <input type="file" id="song2-upload" accept="audio/*"></label>
-                        <audio id="player2" controls></audio>
-                    </div>
-                    <div class="comparison">
-                        <h3>KI und selbstgenerierte Musik im Vergleich</h3>
-                        <p class="compare-note">Vergleiche die Tracks nebeneinander.</p>
-                    </div>
-                </section>
+                </div>
 
-                <section id="about" class="slide-up" data-tab-content="about">
-                    <h2 class="rainbow-text">Über das Magazin</h2>
-                    <p>Wir stellen die Frage: Ist das Kunst oder kann das weg? Diskutiere mit!</p>
-                </section>
+                <!-- Page 4: About -->
+                <div class="page" data-page="4">
+                    <div class="page-content">
+                        <h2 class="page-title">Über das Magazin</h2>
+                        <p>Wir stellen die Frage: Ist das Kunst oder kann das weg? Diskutiere mit!</p>
+                    </div>
+                </div>
+
+                <!-- Page 5 -->
+                <div class="page" data-page="5">
+                    <div class="page-content">
+                        <h2 class="page-title">Seite 5</h2>
+                        <p>Inhalt für Seite 5 – hier kannst du weitere Inhalte hinzufügen.</p>
+                    </div>
+                </div>
+
+                <!-- Page 6 -->
+                <div class="page" data-page="6">
+                    <div class="page-content">
+                        <h2 class="page-title">Seite 6</h2>
+                        <p>Inhalt für Seite 6 – hier kannst du weitere Inhalte hinzufügen.</p>
+                    </div>
+                </div>
+
+                <!-- Page 7 -->
+                <div class="page" data-page="7">
+                    <div class="page-content">
+                        <h2 class="page-title">Seite 7</h2>
+                        <p>Inhalt für Seite 7 – hier kannst du weitere Inhalte hinzufügen.</p>
+                    </div>
+                </div>
+
+                <!-- Page 8 -->
+                <div class="page" data-page="8">
+                    <div class="page-content">
+                        <h2 class="page-title">Seite 8</h2>
+                        <p>Inhalt für Seite 8 – hier kannst du weitere Inhalte hinzufügen.</p>
+                    </div>
+                </div>
+
+                <!-- Page 9 -->
+                <div class="page" data-page="9">
+                    <div class="page-content">
+                        <h2 class="page-title">Seite 9</h2>
+                        <p>Inhalt für Seite 9 – hier kannst du weitere Inhalte hinzufügen.</p>
+                    </div>
+                </div>
+
+                <!-- Page 10 -->
+                <div class="page" data-page="10">
+                    <div class="page-content">
+                        <h2 class="page-title">Seite 10</h2>
+                        <p>Inhalt für Seite 10 – hier kannst du weitere Inhalte hinzufügen.</p>
+                    </div>
+                </div>
+
+                <!-- Page 11 -->
+                <div class="page" data-page="11">
+                    <div class="page-content">
+                        <h2 class="page-title">Seite 11</h2>
+                        <p>Inhalt für Seite 11 – hier kannst du weitere Inhalte hinzufügen.</p>
+                    </div>
+                </div>
+
+                <!-- Page 12 -->
+                <div class="page" data-page="12">
+                    <div class="page-content">
+                        <h2 class="page-title">Seite 12</h2>
+                        <p>Inhalt für Seite 12 – hier kannst du weitere Inhalte hinzufügen.</p>
+                    </div>
+                </div>
+
+                <!-- Page 13 -->
+                <div class="page" data-page="13">
+                    <div class="page-content">
+                        <h2 class="page-title">Seite 13</h2>
+                        <p>Inhalt für Seite 13 – hier kannst du weitere Inhalte hinzufügen.</p>
+                    </div>
+                </div>
+
+                <!-- Page 14 -->
+                <div class="page" data-page="14">
+                    <div class="page-content">
+                        <h2 class="page-title">Seite 14</h2>
+                        <p>Inhalt für Seite 14 – hier kannst du weitere Inhalte hinzufügen.</p>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Page Navigation Buttons -->
+                <div class="page-nav-buttons">
+                    <button class="page-btn prev-btn" id="prev-page" aria-label="Vorherige Seite">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="page-btn next-btn" id="next-page" aria-label="Nächste Seite">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
                 </div>
             </main>
     <script src="script.js"></script>
