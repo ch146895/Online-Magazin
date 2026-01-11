@@ -1,55 +1,84 @@
-// --- Navigation smooth scroll ------------------------------------------------
-const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
-const brandLink = document.querySelector('.brand');
-const sections = Array.from(document.querySelectorAll('main section'));
+// --- Page-based navigation system -------------------------------------------
+let currentPage = 1;
+let totalPages = 14;
+let isAnimating = false;
 
-function setActiveNav(id) {
-    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
+function initPageDots() {
+    const dotsContainer = document.getElementById('page-dots');
+    if (!dotsContainer) return;
+    
+    dotsContainer.innerHTML = '';
+    for (let i = 1; i <= totalPages; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'page-dot';
+        if (i === currentPage) dot.classList.add('active');
+        dot.dataset.page = i;
+        dot.addEventListener('click', () => goToPage(i));
+        dotsContainer.appendChild(dot);
+    }
 }
 
-function showSection(id, push = true) {
-    sections.forEach(s => s.classList.toggle('active', s.id === id));
-    setActiveNav(id);
-    if (brandLink) brandLink.classList.toggle('active', id === 'home');
-    if (push) history.replaceState(null, '', `#${id}`);
-}
-
-navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href') || '#home';
-        const id = href.replace('#', '');
-        e.preventDefault();
-        showSection(id);
-    });
-});
-if (brandLink) brandLink.addEventListener('click', (e) => { e.preventDefault(); showSection('home'); });
-
-// --- Reveal / animations ---------------------------------------------------
-function revealSections() {
-    const sections = document.querySelectorAll('main section');
-    const triggerBottom = window.innerHeight * 0.85;
-    sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < triggerBottom) section.classList.add('visible');
-        else section.classList.remove('visible');
+function updatePageIndicator() {
+    document.querySelectorAll('.page-dot').forEach((dot, idx) => {
+        dot.classList.toggle('active', idx + 1 === currentPage);
     });
 }
-window.addEventListener('scroll', revealSections);
 
-// On load, show the section from hash or default to 'magazin'
-window.addEventListener('load', () => {
-    const hash = (location.hash || '#magazin').replace('#', '');
-    const valid = sections.find(s => s.id === hash) ? hash : 'magazin';
-    showSection(valid, false);
-    revealSections();
+function goToPage(pageNum, direction = null) {
+    if (pageNum === currentPage || isAnimating || pageNum < 1 || pageNum > totalPages) return;
+    
+    isAnimating = true;
+    const pages = document.querySelectorAll('.page');
+    const oldPage = pages[currentPage - 1];
+    const newPage = pages[pageNum - 1];
+    
+    // Determine animation direction
+    const goingForward = direction === 'next' || (direction === null && pageNum > currentPage);
+    
+    // Apply exit animation to old page
+    oldPage.classList.remove('active');
+    oldPage.classList.add(goingForward ? 'exiting-left' : 'exiting-right');
+    
+    // Apply enter animation to new page
+    newPage.style.transform = goingForward ? 'translateX(100%)' : 'translateX(-100%)';
+    newPage.classList.add('active');
+    
+    // Trigger animation
+    requestAnimationFrame(() => {
+        newPage.style.transform = 'translateX(0)';
+    });
+    
+    currentPage = pageNum;
+    updatePageIndicator();
+    updateNavButtons();
+    
+    // Clean up after animation
+    setTimeout(() => {
+        oldPage.classList.remove('exiting-left', 'exiting-right');
+        isAnimating = false;
+    }, 450);
+}
+
+function updateNavButtons() {
+    const prevBtn = document.getElementById('prev-page');
+    const nextBtn = document.getElementById('next-page');
+    if (prevBtn) prevBtn.disabled = currentPage === 1;
+    if (nextBtn) nextBtn.disabled = currentPage === totalPages;
+}
+
+// Navigation buttons
+document.getElementById('prev-page')?.addEventListener('click', () => {
+    if (currentPage > 1) goToPage(currentPage - 1, 'prev');
 });
 
-// --- Header parallax / subtle change --------------------------------------
-window.addEventListener('scroll', () => {
-    const header = document.getElementById('main-header');
-    if (!header) return;
-    const sc = Math.min(window.scrollY / 300, 1);
-    header.style.opacity = `${1 - sc * 0.18}`;
+document.getElementById('next-page')?.addEventListener('click', () => {
+    if (currentPage < totalPages) goToPage(currentPage + 1, 'next');
+});
+
+// Brand link goes to page 1
+document.querySelector('.brand')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    goToPage(1);
 });
 
 // --- Simple local-friendly PDF embed handling ------------------------------
@@ -100,33 +129,37 @@ if (exitBtn) {
     });
 }
 
-// Close fullscreen on ESC (safety)
-document.addEventListener('keydown', (e) => {
+// Keyboard navigation
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' && currentPage < totalPages && !isAnimating) {
+        goToPage(currentPage + 1, 'next');
+    }
+    if (e.key === 'ArrowLeft' && currentPage > 1 && !isAnimating) {
+        goToPage(currentPage - 1, 'prev');
+    }
+    // ESC for fullscreen exit
     if (e.key === 'Escape') {
         if (document.fullscreenElement) document.exitFullscreen && document.exitFullscreen();
         document.querySelectorAll('.fallback-fullscreen').forEach(el => el.classList.remove('fallback-fullscreen'));
-        const eb = document.getElementById('pdf-exit-fullscreen'); if (eb) { eb.setAttribute('aria-hidden', 'true'); eb.style.display = 'none'; }
+        const eb = document.getElementById('pdf-exit-fullscreen'); 
+        if (eb) { eb.setAttribute('aria-hidden', 'true'); eb.style.display = 'none'; }
     }
 });
 
-// --- Keyboard left/right for prev/next sections ----------------------------
-window.addEventListener('keydown', (e) => {
-    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-    const visibleIndex = sections.findIndex(s => s.style.display !== 'none');
-    if (visibleIndex === -1) return;
-    if (e.key === 'ArrowRight' && visibleIndex < sections.length - 1) showSection(sections[visibleIndex + 1].id);
-    if (e.key === 'ArrowLeft' && visibleIndex > 0) showSection(sections[visibleIndex - 1].id);
-});
-
-// --- Swipe to change sections (touch devices) -----------------------------
+// Swipe navigation
 let touchStartX = 0;
 document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
 document.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(dx) < 60) return;
-    const visibleIndex = sections.findIndex(s => s.style.display !== 'none');
-    if (dx < 0 && visibleIndex < sections.length - 1) showSection(sections[visibleIndex + 1].id);
-    if (dx > 0 && visibleIndex > 0) showSection(sections[visibleIndex - 1].id);
+    if (Math.abs(dx) < 60 || isAnimating) return;
+    if (dx < 0 && currentPage < totalPages) goToPage(currentPage + 1, 'next');
+    if (dx > 0 && currentPage > 1) goToPage(currentPage - 1, 'prev');
+});
+
+// Initialize on load
+window.addEventListener('load', () => {
+    initPageDots();
+    goToPage(1);
 });
 
 // --- Audio uploads ---------------------------------------------------------
@@ -145,5 +178,4 @@ function bindAudioUpload(inputId, playerId) {
 bindAudioUpload('song1-upload', 'player1');
 bindAudioUpload('song2-upload', 'player2');
 
-// Keep console-friendly messages
-console.log('Script geladen: Navigation, PDF-Viewer und Audio-Uploads aktiv.');
+console.log('Page navigation ready: Use arrows, swipe, dots, or buttons to navigate.');
