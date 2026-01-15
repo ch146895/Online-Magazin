@@ -21,42 +21,36 @@
     </nav>
     <header id="main-header" class="site-hero">
         <div class="hero-inner">
-            <h1 class="hero-title">Ist das Kunst oder<br>kann das weg?</h1>
-            <p class="hero-sub">Der Wert KI-generierter Musik — Eine kritische Auseinandersetzung</p>
+            <h1 class="hero-title">Ist das Kunst oder kann das weg?</h1>
+            <p class="hero-sub">Der Wert KI-generierter Musik — Ausgabe 2025</p>
         </div>
     </header>
-    <p class="intro">Ein Magazin über die Grenzen zwischen künstlicher Intelligenz und menschlicher Kreativität, zwischen Algorithmen und Emotion, zwischen Innovation und Tradition.</p>
+    <p class="intro">Entdecke spannende Artikel, inspirierende Bilder und kreative Ideen.</p>
             <main>
                 <div class="page-container">
                 <!-- Page 1: Home -->
                 <div class="page" data-page="1">
                     <div class="page-content">
-                        <h2 class="page-title">Editorial</h2>
+                        <h2 class="page-title">Willkommen!</h2>
                         <div class="home-hero">
                             <img src="hero.jpg" alt="Magazin Cover" id="home-image" onerror="this.style.display='none'">
-                            <div>
-                                <h3 class="home-title">Ist das Kunst oder kann das weg?</h3>
-                                <p style="margin-top:20px;line-height:1.8;">Eine Frage, die seit Jahrhunderten die Kunstwelt bewegt. Heute, im Zeitalter der künstlichen Intelligenz, gewinnt sie eine völlig neue Dimension.</p>
-                            </div>
+                            <h3 class="home-title">Ist das Kunst oder kann das weg?</h3>
                         </div>
-                        <p>In dieser Ausgabe widmen wir uns der faszinierenden und zugleich kontroversen Welt der KI-generierten Musik. Kann ein Algorithmus wahre Kunst erschaffen? Wo liegt der Unterschied zwischen menschlicher Kreativität und maschineller Perfektion?</p>
-                        <p>Begleiten Sie uns auf eine Reise durch die verschiedenen Facetten dieser Debatte – von technischen Analysen über philosophische Betrachtungen bis hin zu praktischen Hörbeispielen.</p>
-                        <div class="divider"></div>
+                        <p>Hier findest du aktuelle Themen, Vergleiche zwischen KI-generierter und menschlicher Kunst und mehr.</p>
                     </div>
                 </div>
 
                 <!-- Page 2: Magazin -->
                 <div class="page" data-page="2">
                     <div class="page-content">
-                        <h2 class="page-title">Das Magazin</h2>
-                        <p>Laden Sie hier die vollständige PDF-Ausgabe unseres Magazins hoch oder öffnen Sie die im Projektverzeichnis hinterlegte <code>magazin.pdf</code>.</p>
+                        <p>Setze dein Magazin als Datei `magazin.pdf` in das Projektverzeichnis, oder lade es hier hoch.</p>
                         <div class="magazin-controls">
                             <input type="file" id="pdf-upload" accept="application/pdf">
                         </div>
                         <div class="magazin-viewer">
                             <div class="magazin-embed-wrap">
                                 <embed id="pdf-embed" src="magazin.pdf" type="application/pdf" width="100%" height="800px">
-                                <button id="pdf-exit-fullscreen" class="pdf-exit" aria-hidden="true">Schließen ✕</button>
+                                <button id="pdf-exit-fullscreen" class="pdf-exit" aria-hidden="true">Schliessen ✕</button>
                             </div>
                         </div>
                     </div>
@@ -65,165 +59,108 @@
                 <!-- Page 3: Songs -->
                 <div class="page" data-page="3">
                     <div class="page-content">
-                        <h2 class="page-title">Klangvergleich</h2>
-                        <p>Im Zentrum unserer Untersuchung steht der direkte Vergleich: KI-generierte versus menschlich komponierte Musik. Laden Sie zwei Audiodateien hoch und urteilen Sie selbst.</p>
+                        <h2 class="page-title">Songs</h2>
+                        <p>Bitte lade zwei Songs hoch. Beide werden als Player angezeigt:</p>
                         <div class="song-upload">
-                            <label>KI-Song: <input type="file" id="song1-upload" accept="audio/*"></label>
+                            <label>Song 1: <input type="file" id="song1-upload" accept="audio/*"></label>
                             <audio id="player1" controls></audio>
                         </div>
                         <div class="song-upload">
-                            <label>Mensch-Song: <input type="file" id="song2-upload" accept="audio/*"></label>
+                            <label>Song 2: <input type="file" id="song2-upload" accept="audio/*"></label>
                             <audio id="player2" controls></audio>
                         </div>
                         <div class="comparison">
                             <h3>KI und selbstgenerierte Musik im Vergleich</h3>
-                            <p class="compare-note">Hören Sie genau hin: Können Sie den Unterschied erkennen? Welche Version berührt Sie emotional mehr? Die Antwort mag überraschen.</p>
+                            <p class="compare-note">Vergleiche die Tracks nebeneinander.</p>
                         </div>
-                        <blockquote>
-                            „Musik ist die Sprache der Emotionen. Aber können Maschinen wirklich fühlen?"
-                        </blockquote>
                     </div>
                 </div>
 
                 <!-- Page 4: About -->
                 <div class="page" data-page="4">
                     <div class="page-content">
-                        <h2 class="page-title">Die Debatte</h2>
-                        <p>Die Frage nach dem Wert KI-generierter Kunst spaltet die Gesellschaft. Während die einen in künstlicher Intelligenz das ultimative Werkzeug für grenzenlose Kreativität sehen, befürchten andere den Verlust der menschlichen Seele in der Kunst.</p>
-                        <h3>Argumente für KI-Musik</h3>
-                        <p>Künstliche Intelligenz demokratisiert die Musikproduktion. Plötzlich können Menschen ohne jahrelange Ausbildung professionell klingende Kompositionen erstellen. Die Technologie eröffnet neue klangliche Möglichkeiten und experimentelle Ansätze, die menschliche Komponisten niemals entdeckt hätten.</p>
-                        <h3>Argumente gegen KI-Musik</h3>
-                        <p>Kritiker argumentieren, dass wahre Kunst aus menschlicher Erfahrung, Emotion und Leidenschaft entsteht – Qualitäten, die eine Maschine niemals besitzen kann. KI reproduziert lediglich Muster, ohne die tiefere Bedeutung zu verstehen.</p>
-                        <div class="divider"></div>
-                        <p>Wo stehen Sie in dieser Debatte? Es gibt keine einfachen Antworten, nur neue Fragen.</p>
+                        <h2 class="page-title">Über das Magazin</h2>
+                        <p>Wir stellen die Frage: Ist das Kunst oder kann das weg? Diskutiere mit!</p>
                     </div>
                 </div>
 
                 <!-- Page 5 -->
                 <div class="page" data-page="5">
                     <div class="page-content">
-                        <h2 class="page-title">Technologie</h2>
-                        <p>Hinter der KI-generierten Musik stehen komplexe neuronale Netzwerke, die auf Millionen von Musikstücken trainiert wurden. Diese Systeme analysieren Muster in Melodie, Harmonie, Rhythmus und Instrumentierung.</p>
-                        <p>Moderne KI-Modelle wie OpenAI's MuseNet oder Google's Magenta können innerhalb von Sekunden Kompositionen erschaffen, für die ein Mensch Stunden oder Tage benötigen würde. Sie können verschiedene Stile imitieren, von Barock über Jazz bis zu elektronischer Musik.</p>
-                        <blockquote>
-                            „Die Frage ist nicht, ob KI Musik machen kann, sondern ob diese Musik uns berührt."
-                        </blockquote>
-                        <p>Doch Geschwindigkeit ist nicht alles. Die eigentliche Herausforderung liegt darin, Musik zu schaffen, die nicht nur technisch korrekt ist, sondern auch emotional resoniert.</p>
+                        <h2 class="page-title">Seite 5</h2>
+                        <p>Inhalt für Seite 5 – hier kannst du weitere Inhalte hinzufügen.</p>
                     </div>
                 </div>
 
                 <!-- Page 6 -->
                 <div class="page" data-page="6">
                     <div class="page-content">
-                        <h2 class="page-title">Geschichte</h2>
-                        <p>Die Idee, Musik durch Maschinen zu erschaffen, ist nicht neu. Bereits im 18. Jahrhundert konstruierte Wolfgang von Kempelen seinen berühmten "Schachtürken" – eine vermeintliche Rechenmaschine.</p>
-                        <p>Im 20. Jahrhundert experimentierten Komponisten wie Iannis Xenakis mit algorithmischer Komposition. Sie nutzten mathematische Formeln und frühe Computer, um neue musikalische Strukturen zu erforschen.</p>
-                        <h3>Der Wandel im 21. Jahrhundert</h3>
-                        <p>Mit dem Aufkommen von Machine Learning und Deep Neural Networks hat sich die Landschaft dramatisch verändert. Moderne KI-Systeme lernen nicht nur Regeln, sie entwickeln ein "Verständnis" für musikalische Zusammenhänge.</p>
-                        <div class="divider"></div>
+                        <h2 class="page-title">Seite 6</h2>
+                        <p>Inhalt für Seite 6 – hier kannst du weitere Inhalte hinzufügen.</p>
                     </div>
                 </div>
 
                 <!-- Page 7 -->
                 <div class="page" data-page="7">
                     <div class="page-content">
-                        <h2 class="page-title">Interview</h2>
-                        <p><em>Wir sprachen mit Dr. Maria Schmidt, Musikwissenschaftlerin und KI-Forscherin, über die Zukunft der Musikproduktion.</em></p>
-                        <p><strong>Magazin:</strong> Frau Dr. Schmidt, wird KI menschliche Komponisten ersetzen?</p>
-                        <p><strong>Schmidt:</strong> Ich glaube nicht an ein Entweder-Oder. KI wird eher zum Werkzeug, das Komponisten neue Möglichkeiten eröffnet. Denken Sie an die Erfindung der E-Gitarre – sie hat die Akustikgitarre nicht ersetzt, sondern erweitert.</p>
-                        <p><strong>Magazin:</strong> Aber was ist mit der emotionalen Tiefe?</p>
-                        <p><strong>Schmidt:</strong> Das ist die spannende Frage. Emotion entsteht nicht nur beim Schaffen, sondern auch beim Hören. Wenn ein KI-Song uns berührt, ist das dann weniger "echt"? Ich denke, wir müssen unsere Definition von Authentizität überdenken.</p>
+                        <h2 class="page-title">Seite 7</h2>
+                        <p>Inhalt für Seite 7 – hier kannst du weitere Inhalte hinzufügen.</p>
                     </div>
                 </div>
 
                 <!-- Page 8 -->
                 <div class="page" data-page="8">
                     <div class="page-content">
-                        <h2 class="page-title">Ausblick</h2>
-                        <p>Die Zukunft der Musik liegt vermutlich in der Symbiose zwischen Mensch und Maschine. Künstler werden KI als kreatives Werkzeug nutzen, um ihre Vision zu verwirklichen, während die menschliche Intuition und emotionale Intelligenz die künstlerische Richtung vorgeben.</p>
-                        <h3>Neue Berufsfelder</h3>
-                        <p>Es entstehen bereits neue Rollen: KI-Musikproduzenten, Prompt-Engineers für Musikgenerierung, und Kuratoren, die KI-generierte Werke auswählen und kontextualisieren.</p>
-                        <blockquote>
-                            "Die beste Kunst der Zukunft wird weder rein menschlich noch rein künstlich sein – sie wird hybrid sein."
-                        </blockquote>
+                        <h2 class="page-title">Seite 8</h2>
+                        <p>Inhalt für Seite 8 – hier kannst du weitere Inhalte hinzufügen.</p>
                     </div>
                 </div>
 
                 <!-- Page 9 -->
                 <div class="page" data-page="9">
                     <div class="page-content">
-                        <h2 class="page-title">Ethik</h2>
-                        <p>Die Verwendung von KI in der Musikproduktion wirft wichtige ethische Fragen auf. Wenn eine KI auf bestehender Musik trainiert wird, wem gehören dann die Rechte an den neu generierten Werken?</p>
-                        <p>Sollten KI-generierte Songs als solche gekennzeichnet werden? Haben Hörer ein Recht zu wissen, ob ein Musikstück von einem Menschen oder einer Maschine erschaffen wurde?</p>
-                        <h3>Urheberrecht im Wandel</h3>
-                        <p>Gesetzgeber weltweit ringen mit diesen Fragen. Die traditionellen Konzepte von Autorschaft und kreativer Leistung müssen möglicherweise neu gedacht werden.</p>
-                        <div class="divider"></div>
+                        <h2 class="page-title">Seite 9</h2>
+                        <p>Inhalt für Seite 9 – hier kannst du weitere Inhalte hinzufügen.</p>
                     </div>
                 </div>
 
                 <!-- Page 10 -->
                 <div class="page" data-page="10">
                     <div class="page-content">
-                        <h2 class="page-title">Praktische Anwendung</h2>
-                        <p>Interessiert daran, selbst mit KI-Musikgenerierung zu experimentieren? Hier sind einige Plattformen, die Ihnen den Einstieg erleichtern:</p>
-                        <p><strong>AIVA</strong> – Spezialisiert auf orchestrale und klassische Kompositionen<br>
-                        <strong>Amper Music</strong> – Ideal für Filmmusik und Soundtracks<br>
-                        <strong>Soundraw</strong> – Perfekt für Hintergrundmusik und kommerzielle Projekte</p>
-                        <h3>Tipps für den Einstieg</h3>
-                        <p>Beginnen Sie mit klaren Vorgaben: Stil, Tempo, Stimmung. Je präziser Ihre Anweisungen, desto besser das Ergebnis. Experimentieren Sie mit verschiedenen Parametern und verfeinern Sie iterativ.</p>
-                        <p>Denken Sie daran: KI ist ein Werkzeug. Ihre kreative Vision bleibt der wichtigste Faktor.</p>
+                        <h2 class="page-title">Seite 10</h2>
+                        <p>Inhalt für Seite 10 – hier kannst du weitere Inhalte hinzufügen.</p>
                     </div>
                 </div>
 
                 <!-- Page 11 -->
                 <div class="page" data-page="11">
                     <div class="page-content">
-                        <h2 class="page-title">Klangwelten</h2>
-                        <p>Jenseits der Debatte über Authentizität eröffnet KI-Musik faszinierende neue klangliche Territorien. Algorithmen können Harmonien und Rhythmen erforschen, die außerhalb menschlicher Intuition liegen.</p>
-                        <blockquote>
-                            "In der Verschmelzung von Algorithmus und Emotion liegt die Zukunft der musikalischen Expression."
-                        </blockquote>
-                        <p>Einige Künstler nutzen KI bewusst, um konventionelle Grenzen zu überschreiten. Sie lassen die Maschine Vorschläge machen, die sie dann menschlich interpretieren und verfeinern – eine wahre Kollaboration.</p>
-                        <div class="divider"></div>
+                        <h2 class="page-title">Seite 11</h2>
+                        <p>Inhalt für Seite 11 – hier kannst du weitere Inhalte hinzufügen.</p>
                     </div>
                 </div>
 
                 <!-- Page 12 -->
                 <div class="page" data-page="12">
                     <div class="page-content">
-                        <h2 class="page-title">Philosophie</h2>
-                        <p>Was macht Kunst zur Kunst? Ist es die Intention des Schöpfers, der kreative Prozess, oder die Wirkung auf den Betrachter? Diese Fragen beschäftigen Philosophen seit Jahrhunderten.</p>
-                        <p>Im Kontext von KI-Musik gewinnen sie neue Relevanz. Wenn ein Algorithmus etwas erschafft, das uns bewegt, spielt es dann eine Rolle, dass kein bewusstes Wesen dahinter steht?</p>
-                        <h3>Der Turing-Test für Musik</h3>
-                        <p>Können Sie KI-Musik von menschlicher Komposition unterscheiden? In Blindtests fällt dies selbst Experten zunehmend schwer. Vielleicht ist die Unterscheidung auch gar nicht entscheidend.</p>
-                        <p>Letztlich zählt die Erfahrung des Hörers. Musik, die uns berührt, hat ihren Zweck erfüllt – unabhängig von ihrer Herkunft.</p>
+                        <h2 class="page-title">Seite 12</h2>
+                        <p>Inhalt für Seite 12 – hier kannst du weitere Inhalte hinzufügen.</p>
                     </div>
                 </div>
 
                 <!-- Page 13 -->
                 <div class="page" data-page="13">
                     <div class="page-content">
-                        <h2 class="page-title">Community</h2>
-                        <p>Die KI-Musik-Community wächst rasant. Von experimentellen Künstlern bis zu traditionellen Komponisten – immer mehr Menschen erkunden die Möglichkeiten dieser Technologie.</p>
-                        <p>Online-Foren, Discord-Server und spezialisierte Plattformen bringen Gleichgesinnte zusammen. Hier werden Techniken geteilt, Ergebnisse präsentiert und die Grenzen des Möglichen ausgelotet.</p>
-                        <h3>Kollaborative Projekte</h3>
-                        <p>Besonders spannend sind kollaborative Projekte, bei denen KI als "zusätzliches Bandmitglied" fungiert. Diese hybriden Ensembles schaffen Musik, die weder rein menschlich noch rein maschinell ist.</p>
-                        <div class="divider"></div>
+                        <h2 class="page-title">Seite 13</h2>
+                        <p>Inhalt für Seite 13 – hier kannst du weitere Inhalte hinzufügen.</p>
                     </div>
                 </div>
 
                 <!-- Page 14 -->
                 <div class="page" data-page="14">
                     <div class="page-content">
-                        <h2 class="page-title">Schlusswort</h2>
-                        <p>Ist das Kunst oder kann das weg? Nach dieser Reise durch die Welt der KI-generierten Musik haben wir vielleicht mehr Fragen als Antworten. Und das ist gut so.</p>
-                        <p>Die wichtigste Erkenntnis: Es geht nicht um ein Entweder-Oder. KI ist weder der Untergang noch die Erlösung der Musik. Sie ist ein neues Instrument in einem sich ständig erweiternden Orchester menschlicher Kreativität.</p>
-                        <blockquote>
-                            "Die Zukunft der Musik schreiben wir gemeinsam – Menschen und Maschinen, Hand in Hand."
-                        </blockquote>
-                        <p>Was wir daraus machen, liegt an uns. Die Technologie stellt die Werkzeuge bereit. Die Vision, die Emotion, die Bedeutung – das bleibt menschlich.</p>
-                        <div class="divider"></div>
-                        <p style="text-align:center;margin-top:60px;font-style:italic;color:var(--muted);">Vielen Dank, dass Sie uns auf dieser Reise begleitet haben.</p>
+                        <h2 class="page-title">Seite 14</h2>
+                        <p>Inhalt für Seite 14 – hier kannst du weitere Inhalte hinzufügen.</p>
                     </div>
                 </div>
                 </div>
