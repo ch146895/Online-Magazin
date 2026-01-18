@@ -598,4 +598,23 @@ html{
     padding:24px 32px;
   }
   footer{padding:32px 24px}
+  
+  /* Magazine Images Mobile */
+  .cover-image {
+    max-width: 100%;
+    border: 4px solid #fff;
+  }
+  
+  .page-magazine-image {
+    border: 3px solid #fff;
+  }
+  
+  .page-images-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .page-magazine-image-half {
+    border: 3px solid #fff;
+  }
 }
