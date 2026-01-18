@@ -492,6 +492,50 @@ html{
   color:#fff;
 }
 
+/* Magazine Images */
+.cover-image {
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  margin: 2em auto 0;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 16px 64px rgba(0,0,0,0.25);
+  border: 8px solid #fff;
+}
+
+.page-magazine-image {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin: 0 auto 2em;
+  display: block;
+  border-radius: 4px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+  border: 6px solid #fff;
+}
+
+.page-images-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 0 0 2em;
+}
+
+.page-magazine-image-half {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  border: 4px solid #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.page-magazine-image-half:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+}
+
 /* Subtle page animations */
 @keyframes fadeInUp {
   from {
