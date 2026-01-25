@@ -617,31 +617,60 @@ html{
   .page-magazine-image-half {
     border: 3px solid #fff;
   }
-/* --- Add this to the end of your existing style.css (do NOT replace the file) --- */
+/* --- Append this to the end of style.css --- */
 
-/* Place full-page images beside the following text */
-.page-magazine-image {
-  float: left;
-  width: 40%;            /* image takes ~40% of the container */
-  max-width: 320px;      /* prevent it from getting too large */
-  margin: 0 1rem 1rem 0; /* space to the right and below */
+/* 1) Preferred: apply flex layout when the page-content contains a .page-magazine-image (modern browsers) */
+.page-content:has(> .page-magazine-image) {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.page-content:has(> .page-magazine-image) > .page-magazine-image {
+  flex: 0 0 40%;
+  max-width: 360px;
+  width: 100%;
   height: auto;
   display: block;
+  margin: 0; /* spacing handled by gap */
+}
+.page-content:has(> .page-magazine-image) > .page-magazine-image + .page-title,
+.page-content:has(> .page-magazine-image) > .media-body,
+.page-content:has(> .page-magazine-image) > p {
+  flex: 1 1 auto;
 }
 
-/* Ensure the parent clears floats so layout remains correct */
-.page-content::after {
-  content: "";
-  display: table;
-  clear: both;
+/* 2) Fallback for older browsers: target specific pages that include full-page images */
+.page[data-page="5"] .page-content,
+.page[data-page="7"] .page-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.page[data-page="5"] .page-content > .page-magazine-image,
+.page[data-page="7"] .page-content > .page-magazine-image {
+  flex: 0 0 40%;
+  max-width: 360px;
+  width: 100%;
+  height: auto;
+  margin: 0;
 }
 
-/* Responsive: stack image above text on small screens */
+/* Ensure floats (if any) don't cause surprises */
+.page-content > .page-magazine-image {
+  float: none; /* disable previous float approach so flex rules take precedence */
+}
+
+/* Responsive: stack vertically on small screens */
 @media (max-width: 700px) {
-  .page-magazine-image {
-    float: none;
+  .page-content:has(> .page-magazine-image),
+  .page[data-page="5"] .page-content,
+  .page[data-page="7"] .page-content {
+    display: block;
+  }
+  .page-content > .page-magazine-image {
     width: 100%;
     max-width: none;
     margin: 0 0 1rem 0;
+    display: block;
   }
 }
