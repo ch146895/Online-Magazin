@@ -617,4 +617,31 @@ html{
   .page-magazine-image-half {
     border: 3px solid #fff;
   }
+/* --- Add this to the end of your existing style.css (do NOT replace the file) --- */
+
+/* Place full-page images beside the following text */
+.page-magazine-image {
+  float: left;
+  width: 40%;            /* image takes ~40% of the container */
+  max-width: 320px;      /* prevent it from getting too large */
+  margin: 0 1rem 1rem 0; /* space to the right and below */
+  height: auto;
+  display: block;
+}
+
+/* Ensure the parent clears floats so layout remains correct */
+.page-content::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive: stack image above text on small screens */
+@media (max-width: 700px) {
+  .page-magazine-image {
+    float: none;
+    width: 100%;
+    max-width: none;
+    margin: 0 0 1rem 0;
+  }
 }
