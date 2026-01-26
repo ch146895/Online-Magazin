@@ -617,60 +617,64 @@ html{
   .page-magazine-image-half {
     border: 3px solid #fff;
   }
-/* --- Append this to the end of style.css --- */
-
-/* 1) Preferred: apply flex layout when the page-content contains a .page-magazine-image (modern browsers) */
-.page-content:has(> .page-magazine-image) {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-}
-.page-content:has(> .page-magazine-image) > .page-magazine-image {
-  flex: 0 0 40%;
-  max-width: 360px;
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0; /* spacing handled by gap */
-}
-.page-content:has(> .page-magazine-image) > .page-magazine-image + .page-title,
-.page-content:has(> .page-magazine-image) > .media-body,
-.page-content:has(> .page-magazine-image) > p {
-  flex: 1 1 auto;
 }
 
-/* 2) Fallback for older browsers: target specific pages that include full-page images */
-.page[data-page="5"] .page-content,
-.page[data-page="7"] .page-content {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-}
-.page[data-page="5"] .page-content > .page-magazine-image,
-.page[data-page="7"] .page-content > .page-magazine-image {
-  flex: 0 0 40%;
-  max-width: 360px;
-  width: 100%;
-  height: auto;
-  margin: 0;
+/* --- New: force magazine images to sit beside text on wider screens --- */
+@media (min-width: 900px) {
+  /* Use grid so the image stays in the left column and all text stacks in the right column */
+  .page[data-page="5"] .page-content,
+  .page[data-page="7"] .page-content {
+    display: grid;
+    grid-template-columns: 36% 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  /* Put the image in the left column and span rows so it sits alongside the whole text block */
+  .page[data-page="5"] .page-content > .page-magazine-image,
+  .page[data-page="7"] .page-content > .page-magazine-image {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    width: 100%;
+    max-width: 420px;
+    margin: 0;
+    align-self: start;
+    border: 6px solid #fff;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+  }
+
+  /* Put all other direct children into the right column and let them stack normally */
+  .page[data-page="5"] .page-content > :not(.page-magazine-image),
+  .page[data-page="7"] .page-content > :not(.page-magazine-image) {
+    grid-column: 2;
+  }
+
+  /* Allow paragraphs to use full width of the right column */
+  .page[data-page="5"] .page-content p,
+  .page[data-page="7"] .page-content p {
+    max-width: none;
+  }
+
+  /* Slightly reduce the drop-cap size on wide layout so it looks balanced */
+  .page[data-page="5"] .page-content p:first-of-type::first-letter,
+  .page[data-page="7"] .page-content p:first-of-type::first-letter {
+    font-size:3.6em;
+    line-height:0.9;
+  }
 }
 
-/* Ensure floats (if any) don't cause surprises */
-.page-content > .page-magazine-image {
-  float: none; /* disable previous float approach so flex rules take precedence */
-}
-
-/* Responsive: stack vertically on small screens */
-@media (max-width: 700px) {
-  .page-content:has(> .page-magazine-image),
+/* Ensure smaller screens keep the stacked layout */
+@media (max-width: 899px) {
   .page[data-page="5"] .page-content,
   .page[data-page="7"] .page-content {
     display: block;
   }
-  .page-content > .page-magazine-image {
+  .page[data-page="5"] .page-content > .page-magazine-image,
+  .page[data-page="7"] .page-content > .page-magazine-image {
     width: 100%;
-    max-width: none;
-    margin: 0 0 1rem 0;
-    display: block;
+    max-width: 800px;
+    margin: 0 auto 2em;
+    grid-column: auto;
+    grid-row: auto;
   }
 }
