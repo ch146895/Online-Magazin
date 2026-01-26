@@ -678,3 +678,50 @@ html{
     grid-row: auto;
   }
 }
+
+/* --- Stronger override: ensure images sit beside text on laptop even if DOM differs --- */
+@media (min-width: 900px) {
+  /* Force a 320px image column and put everything else in the right column */
+  .page[data-page="5"] .page-content,
+  .page[data-page="7"] .page-content {
+    display: grid !important;
+    grid-template-columns: 320px 1fr !important;
+    gap: 24px !important;
+    align-items: start !important;
+  }
+
+  /* Target image whether it's an <img> or other element with class page-magazine-image */
+  .page[data-page="5"] .page-content img.page-magazine-image,
+  .page[data-page="7"] .page-content img.page-magazine-image,
+  .page[data-page="5"] .page-content .page-magazine-image,
+  .page[data-page="7"] .page-content .page-magazine-image {
+    grid-column: 1 !important;
+    grid-row: 1 / -1 !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0 !important;
+    display: block !important;
+    align-self: start !important;
+    justify-self: start !important;
+    border: 6px solid #fff !important;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.15) !important;
+  }
+
+  /* Put any other content into the right column */
+  .page[data-page="5"] .page-content > :not(.page-magazine-image),
+  .page[data-page="7"] .page-content > :not(.page-magazine-image),
+  .page[data-page="5"] .page-content .article-body,
+  .page[data-page="7"] .page-content .article-body {
+    grid-column: 2 !important;
+  }
+
+  .page[data-page="5"] .page-content p,
+  .page[data-page="7"] .page-content p { max-width: none !important; }
+}
+
+@media (max-width: 899px) {
+  .page[data-page="5"] .page-content,
+  .page[data-page="7"] .page-content { display: block !important; }
+  .page[data-page="5"] .page-content img.page-magazine-image,
+  .page[data-page="7"] .page-content img.page-magazine-image { width: 100% !important; max-width: 800px !important; margin: 0 auto 2em !important; }
+}
